@@ -1,0 +1,41 @@
+#include<iostream>
+#define ll long long int
+
+using namespace std;
+
+ll N = 100000000;
+bool sieve[100000001];
+void createSieve()
+{
+	for(ll i=2;i<=N;i++)
+	{
+		sieve[i] = true;
+	}
+	for(int i=2;i*i<=N;i++)
+	{
+		if(sieve[i]==true)
+		{
+			for(ll j=i*i;j<=N;j+=i)
+			{
+				sieve[j] = false;
+			}
+		}
+	}
+}
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	createSieve();
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n;
+		cout<<"Enter the Number"<<endl;
+		cin>>n;
+		cout<<(sieve[n]?"The Number is Prime":"The Number is Not Prime")<<endl;
+	}
+	return 0;
+}
