@@ -1,3 +1,61 @@
+O (Log n) Time Complexity
+
+#include<iostream>
+#define ll long long int
+
+using namespace std;
+
+ll N = 10000000;
+ll spf[10000001];
+void createSieve()
+{
+	for(ll i=0;i<=N;i++)
+	{
+		spf[i] = i;
+	}
+	for(ll i=2;i<=N;i++)
+	{
+		if(spf[i]==i)
+		{
+			for(ll j=i*i;j<=N;j+=i)
+			{
+				if(spf[j]==j)
+				{
+					spf[j] = i;
+				}
+			}
+		}
+		else
+		{
+			continue;
+		}
+	}
+}
+int main()
+{
+	createSieve();
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n;
+		cin>>n;
+		while(n!=1)
+		{
+			cout<<spf[n]<<" ";
+			n = n/spf[n];
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+
+
+
 Square Root Time Complexity O(sqrt(n));
 //#include<iostream>
 // #define ll long long int
@@ -28,5 +86,3 @@ Square Root Time Complexity O(sqrt(n));
 // 	cout<<endl;
 // 	return 0;
 // }
-
-
