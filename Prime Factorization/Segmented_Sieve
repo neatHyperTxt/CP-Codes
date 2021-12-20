@@ -1,0 +1,87 @@
+#include<iostream>
+#include<vector>
+#define ll long long int
+
+using namespace std;
+
+ll N = 1000000;
+bool sieve[1000001];
+void createSieve()
+{
+	for(ll i=2;i<=N;i++)
+	{
+		sieve[i] = true;
+	}
+	for(ll i=2;i*i<=N;i++)
+	{
+		if(sieve[i])
+		{
+			for(ll j=i*i;j<=N;j+=i)
+			{
+				sieve[j] = false;
+			}
+		}
+	}
+}
+vector<ll> generatePrime(ll N)
+{
+	vector<ll>v;
+	for(ll i=2;i<=N;i++)
+	{
+		if(sieve[i])
+		{
+			v.push_back(i);
+		}
+		else
+		{
+			continue;
+		}
+	}
+	return v;
+}
+int main()
+{
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	createSieve();
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll l,r;
+		cin>>l>>r;
+		vector<ll>primes = generatePrime(sqrt(r));
+		ll n = r-l+1;
+		ll dummy[n];
+		for(ll i=0;i<=n;i++)
+		{
+			dummy[i] = 1;
+		}
+		for(auto pr:primes)
+		{
+			ll firstMultiple = (l/pr)*pr;
+			if(firstMultiple<l)
+			{
+				firstMultiple+=pr;
+			}
+			else
+			{
+				continue;
+			}
+			for(ll j=max(firstMultiple,pr*pr);j<=r;j+=pr)
+			{
+				dummy[j-l] = 0;
+			}
+		}
+		for(ll i=l;i<=r;i++)
+		{
+			if(dummy[i-l])
+			{
+				cout<<i<<" ";
+			}
+		}
+		cout<<endl;
+	}
+	return 0;
+}
