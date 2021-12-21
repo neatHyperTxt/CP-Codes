@@ -58,18 +58,14 @@ int main()
 		{
 			dummy[i] = 1;
 		}
-		for(auto pr:primes)
+		for(ll i=0;i<primes.size();i++)
 		{
-			ll firstMultiple = (l/pr)*pr;
+			ll firstMultiple = (l/primes[i])*primes[i];
 			if(firstMultiple<l)
 			{
-				firstMultiple+=pr;
+				firstMultiple+=primes[i];
 			}
-			else
-			{
-				continue;
-			}
-			for(ll j=max(firstMultiple,pr*pr);j<=r;j+=pr)
+			for(ll j=max(firstMultiple,primes[i]*primes[i]);j<=r;j+=primes[i])
 			{
 				dummy[j-l] = 0;
 			}
