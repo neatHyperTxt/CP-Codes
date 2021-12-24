@@ -1,4 +1,4 @@
-O (Log n) Time Complexity
+O (Log n) Time Complexityy
 
 #include<iostream>
 #define ll long long int
