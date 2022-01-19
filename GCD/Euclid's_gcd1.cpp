@@ -1,3 +1,6 @@
+// Time Complexity: O(log(min(a,b)));
+
+
 #include<iostream>
 #define ll long long int
 
