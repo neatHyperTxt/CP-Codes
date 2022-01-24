@@ -8,7 +8,7 @@
 
 using namespace std;
 
-vector<ll> trial_division(ll n)
+vector<ll> trial_division(ll n) // all the elements will be Checked
 {
 	vector<ll>factors;
 	for(ll i=2;i*i<=n;i++)
@@ -25,7 +25,7 @@ vector<ll> trial_division(ll n)
 	}
 	return factors;
 }
-vector<ll> wheelFactorization(ll n)
+vector<ll> wheelFactorization(ll n) // only 50% of the elements will be Checked
 {
 	vector<ll>factors;
 	while(n%2==0)
@@ -47,7 +47,7 @@ vector<ll> wheelFactorization(ll n)
 	}
 	return factors;
 }
-vector<ll>wheelFactorization33(ll n)
+vector<ll>wheelFactorization33(ll n) // only 33% of the elements will be Checked
 {
 	vector<ll>factors;
 	for(ll d:{2,3,5})
